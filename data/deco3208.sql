@@ -56,7 +56,7 @@ CREATE TABLE `events` (
 --
 -- Storing data into the table `event`
 --
-INSERT INTO `events` (`holder`, `event_id`, `place`, `title`, `date`, `voting`) VALUES
+INSERT INTO `events` (`event_id`, `holder`,  `place`, `title`, `date`, `voting`) VALUES
 ('1', 'DAS Health & Fitness', 'Splash ''nPlay Adventure Park • South Ripley, QLD', 'DAS Health & Fitness Bootcamp', '2021-11-01', '0'),
 ('2', 'Brisbane City Council Active Parks Program', 'Majestic Park • Coorparoo, QLD', 'Free Boxercise Class', '2021-10-19', '0'),
 ('3', 'O&M Health and Fitness', '54 Teal Circuit • Greenbank, QLD', 'O&M Thursdays - Strength and Conditioning', '2021-10-25', '0'),

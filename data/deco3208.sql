@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 -- table: `user_data`
 --
 
-CREATE TABLE `user_data` (
+CREATE TABLE `user_datas` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE `user_data` (
 -- Storing data into the table `user`
 --
 
-INSERT INTO `user_data` (`username`, `password`, `email`, `active`, `question`, `answer`) VALUES
+INSERT INTO `user_datas` (`username`, `password`, `email`, `active`, `question`, `answer`) VALUES
 ('Dolly', '$2y$10$TX2.Fsn.F.yoJJ94Vu3iXOTHeAjNfJag.nFn3k7IoFY9lbvnZ20tm', 'Dolly@gmail.com', '0', 'what is your name', '$2y$10$4osFk3ha2FXmzCkjsP.btOGs3QkyyyBg1T7I3ucamVqJ8IQdJpIk6'),
 ('Amy', '$2y$10$PJWpoChYNXWtKrZ.by/Tkutlub9tWqvvgR1jSVgVzMtUHGuq/EaAa', 'Amy@gmail.com', '0', 'what is your name', '$2y$10$gLdhRYfNYhoDUmvGgLlTXObmH2.bODcQO0c6XkZgEm1W.5jOfnO7'),
 ('Cathy', '$2y$10$wzHLp3t4z0YX2IbsqG2UZe2oBCPp1IwUZey6aWztWoshtTMD.nYCG', 'Cathy@gmail.com', '0', 'what is your favorite color', '$2y$10$ckivbjLKbw1IgxCTgBSl9eTFojwibkT9g78fwAgvf6.HsYRm/mdfG'),
@@ -40,12 +40,12 @@ INSERT INTO `user_data` (`username`, `password`, `email`, `active`, `question`, 
 --
 -- primary key of table: `user_data`
 --
-ALTER TABLE `user_data`
+ALTER TABLE `user_datas`
   ADD PRIMARY KEY (`username`);
 --
 -- table: `event`
 --
-CREATE TABLE `event` (
+CREATE TABLE `events` (
   `event_id` int(50) NOT NULL,
   `holder` varchar(255) NOT NULL,
   `place` varchar(255) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE `event` (
 --
 -- Storing data into the table `event`
 --
-INSERT INTO `event` (`holder`, `event_id`, `place`, `title`, `date`, `voting`) VALUES
+INSERT INTO `events` (`holder`, `event_id`, `place`, `title`, `date`, `voting`) VALUES
 ('1', 'DAS Health & Fitness', 'Splash ''nPlay Adventure Park • South Ripley, QLD', 'DAS Health & Fitness Bootcamp', '2021-11-01', '0'),
 ('2', 'Brisbane City Council Active Parks Program', 'Majestic Park • Coorparoo, QLD', 'Free Boxercise Class', '2021-10-19', '0'),
 ('3', 'O&M Health and Fitness', '54 Teal Circuit • Greenbank, QLD', 'O&M Thursdays - Strength and Conditioning', '2021-10-25', '0'),
@@ -66,20 +66,20 @@ INSERT INTO `event` (`holder`, `event_id`, `place`, `title`, `date`, `voting`) V
 --
 -- primary key of table: `event`
 --
-ALTER TABLE `event`
-  ADD PRIMARY KEY (`event_id`);
-  
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`event_id`),
+  ADD UNIQUE KEY `event_id` (`event_id`);
   
 
 
 --
 -- table: `calendar`
 --
-CREATE TABLE `calendar` (
+CREATE TABLE `calendars` (
   `username` varchar(50) NOT NULL,
   `event_id` int(50) NOT NULL)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `event` (`username`, `event_id`) VALUES
+INSERT INTO `calendars` (`username`, `event_id`) VALUES
 ('Bob', '1'),
 ('Dolly', '3'),
 ('Dolly', '2'),

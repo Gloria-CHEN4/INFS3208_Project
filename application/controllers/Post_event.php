@@ -15,10 +15,15 @@
         }
         public function post() {
             $title = $this->input->post('title');
-            $date_time = $this->input->post('user_date');
+            $date = $this->input->post('user_date');
             $place = $this->input->post('place');
             $username = $this->session->userdata('username');
-            $this->event_manage->post_event($username, $title, $place, $date_time);
+            $this->event_manage->post_event($username, $title, $place, $date);
+            //$results = $this->event_manage->view_event($username);
+            //$data['results'] = $results;
+            //$this->load->view('my_event_list', $data);
+            echo '<script>alert("You have created this event(s) successfully!")</script>';
+            $this->view_my();
         }
         public function view_my() {
             $username = $this->session->userdata('username');
@@ -30,7 +35,6 @@
             }else{
                 redirect("Log_In");
             }
-            
         }
         public function view_all() {
             $username = $this->session->userdata('username');
@@ -43,6 +47,7 @@
             $username = $this->session->userdata('username');
             $this->event_manage->add_calendar($username, $event_id);
             echo '<script>alert("You have joined event(s) successfully!")</script>';
+            $this->calendar();
         }
         public function search() {
             $keyword = $this->input->get('keyword');
@@ -71,6 +76,7 @@
         public function remove($event_id) {
             $username = $this->session->userdata('username');
             $this->event_manage->cancel_event($username, $event_id);
-            $this->calendar();
+            $this->view_my();
         }
     }
+

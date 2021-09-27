@@ -45,7 +45,8 @@
             return $query->row_array();
         }
         public function cancel_event($username, $event_id) {
-            $this->db->query("Delete from calendar where event_id = '$event_id' and username = '$username'");
+            $this->db->query("delete from calendar where event_id = '$event_id' && username='$username'");
+            $this->db->query("delete from event where event_id = '$event_id' && holder='$username'");
         }
         // Check username matches password
 		public function check_username_password_exists($username, $password){
